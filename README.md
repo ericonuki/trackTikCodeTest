@@ -9,12 +9,12 @@
 
 ### Install instructions:
 
-TBD
+docker-compose build
 
 ### Tests
 
-TBD
+docker-compose run challenge vendor/bin/phpunit
 
 ### Running
 
-TBD
+docker-compose up
