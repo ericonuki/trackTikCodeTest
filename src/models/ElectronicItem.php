@@ -80,4 +80,9 @@ class ElectronicItem
 
         $this->wired = $wired;
     }
+
+    function maxExtras(): int
+    {
+        throw new Exception('Not implemented');
+    }
 }

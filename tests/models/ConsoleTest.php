@@ -20,4 +20,11 @@ class ConsoleTest extends TestCase
         $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
             $subject->getType());
     }
+
+    public function testMaxExtras()
+    {
+        $subject = new Console(0.0);
+
+        $this->assertEquals(4, $subject->getType());
+    }
 }

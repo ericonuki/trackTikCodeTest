@@ -7,4 +7,9 @@ class Console extends ElectronicItem
     {
         parent::__construct(self::ELECTRONIC_ITEM_CONSOLE, $price, $wired);
     }
+
+    public function maxExtras(): int
+    {
+        return 4;
+    }
 }
