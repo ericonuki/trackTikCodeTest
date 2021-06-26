@@ -17,8 +17,10 @@ class ConsoleTest extends TestCase
     {
         $subject = new Console(0.0);
 
-        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
-            $subject->getType());
+        $this->assertEquals(
+            ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
+            $subject->getType()
+        );
     }
 
     public function testMaxExtras()
@@ -41,13 +43,15 @@ class ConsoleTest extends TestCase
     {
         $this->expectErrorMessage('Cannot add more than 4 items.');
         $subject = new Console(0.0);
-        $wired = new ElectronicItems([
+        $wired = new ElectronicItems(
+            [
             new WiredController(),
             new WiredController(),
             new WiredController(),
             new WiredController(),
             new WiredController()
-        ]);
+            ]
+        );
         $subject->setWired($wired);
     }
 }

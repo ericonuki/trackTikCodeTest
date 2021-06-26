@@ -27,8 +27,10 @@ class ElectronicItemTest extends TestCase
     {
         $subject = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE);
 
-        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
-            $subject->getType());
+        $this->assertEquals(
+            ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
+            $subject->getType()
+        );
     }
 
     public function testGetPrice()
@@ -51,8 +53,10 @@ class ElectronicItemTest extends TestCase
         );
         $subject->setType(ElectronicItem::ELECTRONIC_ITEM_WIRED_CONTROLLER);
 
-        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_WIRED_CONTROLLER,
-            $subject->getType());
+        $this->assertEquals(
+            ElectronicItem::ELECTRONIC_ITEM_WIRED_CONTROLLER,
+            $subject->getType()
+        );
     }
 
     public function testSetTypeWrongThrowsError()

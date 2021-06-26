@@ -35,8 +35,7 @@ class ElectronicItem
         float $price = 0.0,
         ElectronicItems $wired = null
     ) {
-        if(is_null($wired))
-        {
+        if(is_null($wired)) {
             $wired = new ElectronicItems([]);
         }
 
@@ -86,7 +85,8 @@ class ElectronicItem
 
         if($wired->getItemsCount() > $this->maxExtras()) {
             throw new Exception(
-                "Cannot add more than {$this->maxExtras()} items.");
+                "Cannot add more than {$this->maxExtras()} items."
+            );
         }
 
         $this->wired = $wired;
@@ -97,6 +97,12 @@ class ElectronicItem
         return null;
     }
 
+    /**
+     * Reasoning behind this function: you need to get the attached electronics
+     * of every downstream electronic
+     *
+     * @return array
+     */
     function getAllItems(): array
     {
         return array_merge([$this], $this->wired->getAllItems());

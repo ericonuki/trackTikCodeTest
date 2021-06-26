@@ -23,7 +23,9 @@ class WiredControllerTest extends TestCase
             new ElectronicItems([])
         );
 
-        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_WIRED_CONTROLLER,
-            $subject->getType());
+        $this->assertEquals(
+            ElectronicItem::ELECTRONIC_ITEM_WIRED_CONTROLLER,
+            $subject->getType()
+        );
     }
 }

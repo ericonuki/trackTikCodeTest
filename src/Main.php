@@ -18,8 +18,15 @@ class Main
         $subject = $this->question1Setup();
         $allitems = new ElectronicItems($subject->getAllItems());
         $sorted = $allitems->getSortedItems();
-        print_r(array_reduce($sorted,
-            fn($carry, ElectronicItem $eln) => $carry + $eln->getPrice(), 0));
+        print_r('The ordered array of electronics');
+        print_r($sorted);
+        print_r('Total price of all electronics:');
+        print_r(
+            array_reduce(
+                $sorted,
+                fn($carry, ElectronicItem $eln) => $carry + $eln->getPrice(), 0
+            )
+        );
     }
 
     /**

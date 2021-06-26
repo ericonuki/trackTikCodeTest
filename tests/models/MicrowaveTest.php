@@ -23,8 +23,10 @@ class MicrowaveTest extends TestCase
             new ElectronicItems([])
         );
 
-        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_MICROWAVE,
-            $subject->getType());
+        $this->assertEquals(
+            ElectronicItem::ELECTRONIC_ITEM_MICROWAVE,
+            $subject->getType()
+        );
     }
 
     public function testMaxExtras()
@@ -47,13 +49,15 @@ class MicrowaveTest extends TestCase
     {
         $this->expectErrorMessage('Cannot add more than 0 items.');
         $subject = new Microwave(0.0);
-        $wired = new ElectronicItems([
+        $wired = new ElectronicItems(
+            [
             new WiredController(),
             new WiredController(),
             new WiredController(),
             new WiredController(),
             new WiredController()
-        ]);
+            ]
+        );
         $subject->setWired($wired);
     }
 }

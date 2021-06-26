@@ -54,6 +54,12 @@ class ElectronicItems
         return count($this->items);
     }
 
+    /**
+     * Reasoning behind this function: You don't need to call the sort function
+     * multiple times.
+     *
+     * @return array[]
+     */
     public function getAllItems()
     {
         $map = array_map(fn(ElectronicItem $arr) => $arr->getAllItems(), $this->items);

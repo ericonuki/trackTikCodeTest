@@ -23,8 +23,10 @@ class TelevisionTest extends TestCase
             new ElectronicItems([])
         );
 
-        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_TELEVISION,
-            $subject->getType());
+        $this->assertEquals(
+            ElectronicItem::ELECTRONIC_ITEM_TELEVISION,
+            $subject->getType()
+        );
     }
 
     public function testMaxExtras()
@@ -46,13 +48,15 @@ class TelevisionTest extends TestCase
     public function testSetWiredWithMoreThanMax()
     {
         $subject = new Television(0.0);
-        $wired = new ElectronicItems([
+        $wired = new ElectronicItems(
+            [
             new WiredController(),
             new WiredController(),
             new WiredController(),
             new WiredController(),
             new WiredController()
-        ]);
+            ]
+        );
         $subject->setWired($wired);
 
         $this->assertEquals($wired, $subject->getWired());
