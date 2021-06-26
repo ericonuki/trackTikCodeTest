@@ -7,7 +7,8 @@ class ElectronicItemTest extends TestCase
 {
     public function testInitialize()
     {
-        $subject = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE, []);
+        $subject = new ElectronicItem(
+            ElectronicItem::ELECTRONIC_ITEM_CONSOLE, []);
 
         $this->assertInstanceOf(ElectronicItem::class, $subject);
     }
@@ -31,7 +32,8 @@ class ElectronicItemTest extends TestCase
     {
         $subject = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE);
 
-        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_CONSOLE, $subject->getType());
+        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
+            $subject->getType());
     }
 
     public function testGetWired()
@@ -45,7 +47,12 @@ class ElectronicItemTest extends TestCase
 
     public function testSetWired()
     {
+        $wired = [new ElectronicItem(
+            ElectronicItem::ELECTRONIC_ITEM_CONTROLLER)];
+        $subject = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE);
+        $subject->setWired($wired);
 
+        $this->assertEquals($wired, $subject->getWired());
     }
 
     public function testGetPrice()
