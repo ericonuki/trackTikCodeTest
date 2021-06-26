@@ -17,7 +17,9 @@ class Main
     {
         $subject = $this->question1Setup();
         $allitems = new ElectronicItems($subject->getAllItems());
-        print_r($allitems->getSortedItems());
+        $sorted = $allitems->getSortedItems();
+        print_r(array_reduce($sorted,
+            fn($carry, ElectronicItem $eln) => $carry + $eln->getPrice(), 0));
     }
 
     /**
