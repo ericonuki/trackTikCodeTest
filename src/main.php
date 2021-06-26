@@ -1,1 +1,6 @@
 <?php
+
+function question1()
+{
+
+}
