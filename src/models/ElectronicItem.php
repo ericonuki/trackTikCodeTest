@@ -19,13 +19,20 @@ class ElectronicItem
     const ELECTRONIC_ITEM_TELEVISION = 'television';
     const ELECTRONIC_ITEM_CONSOLE = 'console';
     const ELECTRONIC_ITEM_MICROWAVE = 'microwave';
-    const ELECTRONIC_ITEM_CONTROLLER = 'controller';
+    const ELECTRONIC_ITEM_WIRED_CONTROLLER = 'wired_controller';
+    const ELECTRONIC_ITEM_REMOTE_CONTROLLER = 'remote_controller';
 
-    public static $types = array(self::ELECTRONIC_ITEM_CONSOLE,
-        self::ELECTRONIC_ITEM_MICROWAVE, self::ELECTRONIC_ITEM_TELEVISION,
-        self::ELECTRONIC_ITEM_CONTROLLER);
+    public static $types = [
+        self::ELECTRONIC_ITEM_CONSOLE,
+        self::ELECTRONIC_ITEM_MICROWAVE,
+        self::ELECTRONIC_ITEM_TELEVISION,
+        self::ELECTRONIC_ITEM_WIRED_CONTROLLER,
+        self::ELECTRONIC_ITEM_REMOTE_CONTROLLER
+    ];
 
-    public function __construct(string $type, float $price = 0.0,
+    public function __construct(
+        string $type,
+        float $price = 0.0,
         ElectronicItems $wired = null
     ) {
         if(is_null($wired))
@@ -73,13 +80,11 @@ class ElectronicItem
 
     function setWired(ElectronicItems $wired)
     {
-        if(get_class($wired) !== ElectronicItems::class)
-        {
+        if(get_class($wired) !== ElectronicItems::class) {
             throw new Exception('Can only setWired of class ElectronicItems');
         }
 
-        if($wired->getItemsCount() > $this->maxExtras())
-        {
+        if($wired->getItemsCount() > $this->maxExtras()) {
             throw new Exception(
                 "Cannot add more than {$this->maxExtras()} items.");
         }

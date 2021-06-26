@@ -11,9 +11,11 @@ class Main
         $console1 = new Console($faker->randomFloat(2, 0));
         $tv1 = new Television($faker->randomFloat(2, 0));
         $tv2 = new Television($faker->randomFloat(2, 0));
+        $microwave1 = new Microwave($faker->randomFloat(2, 0));
 
         print_r($console1);
         print_r($tv1);
         print_r($tv2);
+        print_r($microwave1);
     }
 }

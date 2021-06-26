@@ -1,42 +1,40 @@
 <?php
 
 require_once 'src/models/Controller.php';
+require_once 'src/models/WiredController.php';
 
 use PHPUnit\Framework\TestCase;
 
 class ControllerTest extends TestCase
 {
-    public function testInitialize()
+    public function setTypeCanOnlyBeController()
     {
         $subject = new Controller(
-            0.0,
-            new ElectronicItems([])
+            ElectronicItem::ELECTRONIC_ITEM_REMOTE_CONTROLLER,
+            0.0
         );
 
-        $this->assertInstanceOf(Controller::class, $subject);
-    }
+        $this->expectErrorMessage('television is not an acceptable type');
 
-    public function testGetType()
-    {
-        $subject = new Controller(
-            0.0,
-            new ElectronicItems([])
-        );
-
-        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_CONTROLLER,
-            $subject->getType());
+        $subject->setType(ElectronicItem::ELECTRONIC_ITEM_TELEVISION);
     }
 
     public function testMaxExtras()
     {
-        $subject = new Controller(0.0);
+        $subject = new Controller(
+            ElectronicItem::ELECTRONIC_ITEM_REMOTE_CONTROLLER,
+            0.0
+        );
 
         $this->assertEquals(0, $subject->maxExtras());
     }
 
     public function testSetWired()
     {
-        $subject = new Controller(0.0);
+        $subject = new Controller(
+            ElectronicItem::ELECTRONIC_ITEM_REMOTE_CONTROLLER,
+            0.0
+        );
         $wired = new ElectronicItems([]);
         $subject->setWired($wired);
 
@@ -46,13 +44,13 @@ class ControllerTest extends TestCase
     public function testSetWiredWithMoreThanMax()
     {
         $this->expectErrorMessage('Cannot add more than 0 items.');
-        $subject = new Controller(0.0);
+        $subject = new Controller(ElectronicItem::ELECTRONIC_ITEM_REMOTE_CONTROLLER, 0.0);
         $wired = new ElectronicItems([
-            new Controller(),
-            new Controller(),
-            new Controller(),
-            new Controller(),
-            new Controller()
+            new WiredController(),
+            new WiredController(),
+            new WiredController(),
+            new WiredController(),
+            new WiredController()
         ]);
         $subject->setWired($wired);
     }

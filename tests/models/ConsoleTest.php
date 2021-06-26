@@ -31,7 +31,7 @@ class ConsoleTest extends TestCase
     public function testSetWired()
     {
         $subject = new Console(0.0);
-        $wired = new ElectronicItems([new Controller()]);
+        $wired = new ElectronicItems([new WiredController()]);
         $subject->setWired($wired);
 
         $this->assertEquals($wired, $subject->getWired());
@@ -42,11 +42,11 @@ class ConsoleTest extends TestCase
         $this->expectErrorMessage('Cannot add more than 4 items.');
         $subject = new Console(0.0);
         $wired = new ElectronicItems([
-            new Controller(),
-            new Controller(),
-            new Controller(),
-            new Controller(),
-            new Controller()
+            new WiredController(),
+            new WiredController(),
+            new WiredController(),
+            new WiredController(),
+            new WiredController()
         ]);
         $subject->setWired($wired);
     }

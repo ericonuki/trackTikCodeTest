@@ -47,11 +47,11 @@ class TelevisionTest extends TestCase
     {
         $subject = new Television(0.0);
         $wired = new ElectronicItems([
-            new Controller(),
-            new Controller(),
-            new Controller(),
-            new Controller(),
-            new Controller()
+            new WiredController(),
+            new WiredController(),
+            new WiredController(),
+            new WiredController(),
+            new WiredController()
         ]);
         $subject->setWired($wired);
 

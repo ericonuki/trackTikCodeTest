@@ -49,9 +49,9 @@ class ElectronicItemTest extends TestCase
             5.00,
             new ElectronicItems([])
         );
-        $subject->setType(ElectronicItem::ELECTRONIC_ITEM_CONTROLLER);
+        $subject->setType(ElectronicItem::ELECTRONIC_ITEM_WIRED_CONTROLLER);
 
-        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_CONTROLLER,
+        $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_WIRED_CONTROLLER,
             $subject->getType());
     }
 

@@ -48,11 +48,11 @@ class MicrowaveTest extends TestCase
         $this->expectErrorMessage('Cannot add more than 0 items.');
         $subject = new Microwave(0.0);
         $wired = new ElectronicItems([
-            new Controller(),
-            new Controller(),
-            new Controller(),
-            new Controller(),
-            new Controller()
+            new WiredController(),
+            new WiredController(),
+            new WiredController(),
+            new WiredController(),
+            new WiredController()
         ]);
         $subject->setWired($wired);
     }
