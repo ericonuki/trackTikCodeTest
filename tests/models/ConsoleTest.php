@@ -25,6 +25,6 @@ class ConsoleTest extends TestCase
     {
         $subject = new Console(0.0);
 
-        $this->assertEquals(4, $subject->getType());
+        $this->assertEquals(4, $subject->maxExtras());
     }
 }

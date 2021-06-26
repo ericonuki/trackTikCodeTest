@@ -26,4 +26,11 @@ class MicrowaveTest extends TestCase
         $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_MICROWAVE,
             $subject->getType());
     }
+
+    public function testMaxExtras()
+    {
+        $subject = new Microwave(0.0);
+
+        $this->assertEquals(0, $subject->maxExtras());
+    }
 }

@@ -29,8 +29,8 @@ class ControllerTest extends TestCase
 
     public function testMaxExtras()
     {
-        $subject = new Console(0.0);
+        $subject = new Controller(0.0);
 
-        $this->assertEquals(0, $subject->getType());
+        $this->assertEquals(0, $subject->maxExtras());
     }
 }

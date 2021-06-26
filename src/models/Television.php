@@ -7,4 +7,9 @@ class Television extends ElectronicItem
     {
         parent::__construct(self::ELECTRONIC_ITEM_TELEVISION, $price, $wired);
     }
+
+    public function maxExtras(): int
+    {
+        return PHP_INT_MAX;
+    }
 }

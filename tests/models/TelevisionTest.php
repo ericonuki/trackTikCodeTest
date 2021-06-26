@@ -26,4 +26,11 @@ class TelevisionTest extends TestCase
         $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_TELEVISION,
             $subject->getType());
     }
+
+    public function testMaxExtras()
+    {
+        $subject = new Television(0.0);
+
+        $this->assertEquals(PHP_INT_MAX, $subject->maxExtras());
+    }
 }

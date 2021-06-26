@@ -7,4 +7,9 @@ class Microwave extends ElectronicItem
     {
         parent::__construct(self::ELECTRONIC_ITEM_MICROWAVE, $price, $wired);
     }
+
+    public function maxExtras(): int
+    {
+        return 0;
+    }
 }
