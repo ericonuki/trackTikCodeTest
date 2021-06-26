@@ -30,17 +30,8 @@ class ElectronicItem
             throw new Exception("${type} is not an acceptable type");
         }
 
-        foreach ($wired as $electronic)
-        {
-            if(!is_object($electronic)||(get_class($electronic) !== __CLASS__))
-            {
-                throw new Exception(
-                    "Cannot add wired elements that are not ElectronicItem");
-            }
-        }
-
         $this->type = $type;
-        $this->wired = $wired;
+        $this->setWired($wired);
     }
 
     function getPrice()
@@ -70,6 +61,15 @@ class ElectronicItem
 
     function setWired($wired)
     {
+        foreach ($wired as $electronic)
+        {
+            if(!is_object($electronic)||(get_class($electronic) !== __CLASS__))
+            {
+                throw new Exception(
+                    "Cannot add wired elements that are not ElectronicItem");
+            }
+        }
+
         $this->wired = $wired;
     }
 }

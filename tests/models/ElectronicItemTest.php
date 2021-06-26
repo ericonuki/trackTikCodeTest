@@ -55,6 +55,16 @@ class ElectronicItemTest extends TestCase
         $this->assertEquals($wired, $subject->getWired());
     }
 
+    public function testSetWiredWithWrongWired()
+    {
+        $this->expectExceptionMessage(
+            'Cannot add wired elements that are not ElectronicItem');
+
+        $wired = ['wrong'];
+        $subject = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE);
+        $subject->setWired($wired);
+    }
+
     public function testGetPrice()
     {
 
