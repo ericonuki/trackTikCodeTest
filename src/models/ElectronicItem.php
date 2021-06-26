@@ -78,11 +78,17 @@ class ElectronicItem
             throw new Exception('Can only setWired of class ElectronicItems');
         }
 
+        if($wired->getItemsCount() > $this->maxExtras())
+        {
+            throw new Exception(
+                "Cannot add more than {$this->maxExtras()} items.");
+        }
+
         $this->wired = $wired;
     }
 
-    function maxExtras(): int
+    function maxExtras(): ?int
     {
-        throw new Exception('Not implemented');
+        return null;
     }
 }

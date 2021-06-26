@@ -33,4 +33,28 @@ class TelevisionTest extends TestCase
 
         $this->assertEquals(PHP_INT_MAX, $subject->maxExtras());
     }
+
+    public function testSetWired()
+    {
+        $subject = new Television(0.0);
+        $wired = new ElectronicItems([]);
+        $subject->setWired($wired);
+
+        $this->assertEquals($wired, $subject->getWired());
+    }
+
+    public function testSetWiredWithMoreThanMax()
+    {
+        $subject = new Television(0.0);
+        $wired = new ElectronicItems([
+            new Controller(),
+            new Controller(),
+            new Controller(),
+            new Controller(),
+            new Controller()
+        ]);
+        $subject->setWired($wired);
+
+        $this->assertEquals($wired, $subject->getWired());
+    }
 }

@@ -31,26 +31,6 @@ class ElectronicItemTest extends TestCase
             $subject->getType());
     }
 
-    public function testGetWired()
-    {
-        $wired = new ElectronicItems([new ElectronicItem(
-            ElectronicItem::ELECTRONIC_ITEM_CONTROLLER)]);
-        $subject = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
-            0.0, $wired);
-
-        $this->assertEquals($wired, $subject->getWired());
-    }
-
-    public function testSetWired()
-    {
-        $wired = new ElectronicItems([new ElectronicItem(
-            ElectronicItem::ELECTRONIC_ITEM_CONTROLLER)]);
-        $subject = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE);
-        $subject->setWired($wired);
-
-        $this->assertEquals($wired, $subject->getWired());
-    }
-
     public function testGetPrice()
     {
         $subject = new ElectronicItem(

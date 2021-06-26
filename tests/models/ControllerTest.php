@@ -33,4 +33,27 @@ class ControllerTest extends TestCase
 
         $this->assertEquals(0, $subject->maxExtras());
     }
+
+    public function testSetWired()
+    {
+        $subject = new Controller(0.0);
+        $wired = new ElectronicItems([]);
+        $subject->setWired($wired);
+
+        $this->assertEquals($wired, $subject->getWired());
+    }
+
+    public function testSetWiredWithMoreThanMax()
+    {
+        $this->expectErrorMessage('Cannot add more than 0 items.');
+        $subject = new Controller(0.0);
+        $wired = new ElectronicItems([
+            new Controller(),
+            new Controller(),
+            new Controller(),
+            new Controller(),
+            new Controller()
+        ]);
+        $subject->setWired($wired);
+    }
 }
