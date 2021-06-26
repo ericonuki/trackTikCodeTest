@@ -1,5 +1,6 @@
 <?php
 
+require_once 'src/models/Television.php';
 
 use PHPUnit\Framework\TestCase;
 
