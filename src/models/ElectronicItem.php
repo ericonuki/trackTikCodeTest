@@ -17,18 +17,30 @@ class ElectronicItem
     const ELECTRONIC_ITEM_TELEVISION = 'television';
     const ELECTRONIC_ITEM_CONSOLE = 'console';
     const ELECTRONIC_ITEM_MICROWAVE = 'microwave';
+    const ELECTRONIC_ITEM_CONTROLLER = 'controller';
 
     public static $types = array(self::ELECTRONIC_ITEM_CONSOLE,
-        self::ELECTRONIC_ITEM_MICROWAVE, self::ELECTRONIC_ITEM_TELEVISION);
+        self::ELECTRONIC_ITEM_MICROWAVE, self::ELECTRONIC_ITEM_TELEVISION,
+        self::ELECTRONIC_ITEM_CONTROLLER);
 
-    public function __construct(string $type)
+    public function __construct(string $type, array $wired = [])
     {
         if(!in_array($type, self::$types))
         {
             throw new Exception("${type} is not an acceptable type");
         }
 
+        foreach ($wired as $electronic)
+        {
+            if(!is_object($electronic)||(get_class($electronic) !== __CLASS__))
+            {
+                throw new Exception(
+                    "Cannot add wired elements that are not ElectronicItem");
+            }
+        }
+
         $this->type = $type;
+        $this->wired = $wired;
     }
 
     function getPrice()
