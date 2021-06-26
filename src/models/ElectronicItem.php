@@ -24,8 +24,8 @@ class ElectronicItem
         self::ELECTRONIC_ITEM_CONTROLLER);
 
     public function __construct(string $type, float $price = 0.0,
-                                array $wired = [])
-    {
+        array $wired = []
+    ) {
 
         $this->setType($type);
         $this->setWired($wired);
@@ -49,8 +49,7 @@ class ElectronicItem
 
     function setPrice($price)
     {
-        if($price < 0)
-        {
+        if($price < 0) {
             throw new Exception('Cannot setPrice with value lower than 0');
         }
 
@@ -59,8 +58,7 @@ class ElectronicItem
 
     function setType($type)
     {
-        if(!in_array($type, self::$types))
-        {
+        if(!in_array($type, self::$types)) {
             throw new Exception("${type} is not an acceptable type");
         }
 
@@ -71,10 +69,10 @@ class ElectronicItem
     {
         foreach ($wired as $electronic)
         {
-            if(!is_object($electronic)||(get_class($electronic) !== __CLASS__))
-            {
+            if(!is_object($electronic)||(get_class($electronic) !== __CLASS__)) {
                 throw new Exception(
-                    "Cannot add wired elements that are not ElectronicItem");
+                    "Cannot add wired elements that are not ElectronicItem"
+                );
             }
         }
 

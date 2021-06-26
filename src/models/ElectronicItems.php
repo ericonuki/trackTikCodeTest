@@ -28,7 +28,7 @@ class ElectronicItems
 
     /**
      *
-     * @param string $type
+     * @param  string $type
      * @return array
      */
     public function getItemsByType($type)
