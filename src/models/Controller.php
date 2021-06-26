@@ -7,4 +7,9 @@ class Controller extends ElectronicItem
     {
         parent::__construct(self::ELECTRONIC_ITEM_CONTROLLER, $price, $wired);
     }
+
+    public function maxExtras(): int
+    {
+        return 0;
+    }
 }

@@ -26,4 +26,11 @@ class ControllerTest extends TestCase
         $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_CONTROLLER,
             $subject->getType());
     }
+
+    public function testMaxExtras()
+    {
+        $subject = new Console(0.0);
+
+        $this->assertEquals(0, $subject->getType());
+    }
 }
