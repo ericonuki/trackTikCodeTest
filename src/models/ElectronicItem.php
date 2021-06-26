@@ -23,15 +23,13 @@ class ElectronicItem
         self::ELECTRONIC_ITEM_MICROWAVE, self::ELECTRONIC_ITEM_TELEVISION,
         self::ELECTRONIC_ITEM_CONTROLLER);
 
-    public function __construct(string $type, array $wired = [])
+    public function __construct(string $type, float $price = 0.0,
+                                array $wired = [])
     {
-        if(!in_array($type, self::$types))
-        {
-            throw new Exception("${type} is not an acceptable type");
-        }
 
-        $this->type = $type;
+        $this->setType($type);
         $this->setWired($wired);
+        $this->setPrice($price);
     }
 
     function getPrice()
@@ -51,11 +49,21 @@ class ElectronicItem
 
     function setPrice($price)
     {
+        if($price < 0)
+        {
+            throw new Exception('Cannot setPrice with value lower than 0');
+        }
+
         $this->price = $price;
     }
 
     function setType($type)
     {
+        if(!in_array($type, self::$types))
+        {
+            throw new Exception("${type} is not an acceptable type");
+        }
+
         $this->type = $type;
     }
 
