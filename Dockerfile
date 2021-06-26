@@ -6,4 +6,4 @@ COPY . /code
 
 RUN composer install
 
-CMD php ./app/main.php
+CMD php ./app/run_main.php
