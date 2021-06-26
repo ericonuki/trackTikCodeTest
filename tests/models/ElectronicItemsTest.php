@@ -45,4 +45,22 @@ class ElectronicItemsTest extends TestCase
             300 => new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONTROLLER, 3),
         ], $subject->getSortedItems('price'));
     }
+
+    public function testItemsCount()
+    {
+        $subject = new ElectronicItems([
+            new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONTROLLER, 2),
+            new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONTROLLER, 3),
+            new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_TELEVISION, 1),
+        ]);
+
+        $this->assertEquals(3, $subject->getItemsCount());
+    }
+
+    public function testItemsCountZero()
+    {
+        $subject = new ElectronicItems([]);
+
+        $this->assertEquals(0, $subject->getItemsCount());
+    }
 }

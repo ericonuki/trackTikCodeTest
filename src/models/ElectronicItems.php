@@ -48,4 +48,9 @@ class ElectronicItems
 
         return $items;
     }
+
+    public function getItemsCount()
+    {
+        return count($this->items);
+    }
 }
