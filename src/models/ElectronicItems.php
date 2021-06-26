@@ -53,4 +53,10 @@ class ElectronicItems
     {
         return count($this->items);
     }
+
+    public function getAllItems()
+    {
+        $map = array_map(fn(ElectronicItem $arr) => $arr->getAllItems(), $this->items);
+        return array_merge(...$map);
+    }
 }

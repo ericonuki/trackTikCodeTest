@@ -13,8 +13,8 @@ class ElectronicItem
     /**
      * @var string
      */
-    private $type;
-    public $wired;
+    private ?string $type;
+    public ?ElectronicItems $wired;
 
     const ELECTRONIC_ITEM_TELEVISION = 'television';
     const ELECTRONIC_ITEM_CONSOLE = 'console';
@@ -95,5 +95,10 @@ class ElectronicItem
     function maxExtras(): ?int
     {
         return null;
+    }
+
+    function getAllItems(): array
+    {
+        return array_merge([$this], $this->wired->getAllItems());
     }
 }

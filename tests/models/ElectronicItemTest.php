@@ -89,4 +89,21 @@ class ElectronicItemTest extends TestCase
         );
         $subject->setPrice(-5.00);
     }
+
+    public function testGetAllItems()
+    {
+        $subject = new Television(1);
+
+        $this->assertEquals([$subject], $subject->getAllItems());
+    }
+
+    public function testGetAllItemsWithOneWired()
+    {
+        $subject = new Television(1);
+        $wr1 = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_WIRED_CONTROLLER, 2);
+        $wired = new ElectronicItems([$wr1]);
+        $subject->setWired($wired);
+
+        $this->assertEquals([$subject, $wr1], $subject->getAllItems());
+    }
 }

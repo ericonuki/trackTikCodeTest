@@ -63,4 +63,12 @@ class ElectronicItemsTest extends TestCase
 
         $this->assertEquals(0, $subject->getItemsCount());
     }
+
+    public function testGetAllItems()
+    {
+        $tv = new Television(1);
+        $subject = new ElectronicItems([$tv]);
+
+        $this->assertEquals([$tv], $subject->getAllItems());
+    }
 }
