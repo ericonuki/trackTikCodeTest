@@ -1,5 +1,7 @@
 <?php
 
+require_once 'ElectronicItems.php';
+
 class ElectronicItem
 {
 
@@ -24,8 +26,12 @@ class ElectronicItem
         self::ELECTRONIC_ITEM_CONTROLLER);
 
     public function __construct(string $type, float $price = 0.0,
-        array $wired = []
+        ElectronicItems $wired = null
     ) {
+        if(is_null($wired))
+        {
+            $wired = new ElectronicItems([]);
+        }
 
         $this->setType($type);
         $this->setWired($wired);
@@ -65,15 +71,11 @@ class ElectronicItem
         $this->type = $type;
     }
 
-    function setWired($wired)
+    function setWired(ElectronicItems $wired)
     {
-        foreach ($wired as $electronic)
+        if(get_class($wired) !== ElectronicItems::class)
         {
-            if(!is_object($electronic)||(get_class($electronic) !== __CLASS__)) {
-                throw new Exception(
-                    "Cannot add wired elements that are not ElectronicItem"
-                );
-            }
+            throw new Exception('Can only setWired of class ElectronicItems');
         }
 
         $this->wired = $wired;

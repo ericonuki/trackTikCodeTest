@@ -8,7 +8,10 @@ class ElectronicItemTest extends TestCase
     public function testInitialize()
     {
         $subject = new ElectronicItem(
-            ElectronicItem::ELECTRONIC_ITEM_CONSOLE, 0.0, []);
+            ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
+            0.0,
+            new ElectronicItems([])
+        );
 
         $this->assertInstanceOf(ElectronicItem::class, $subject);
     }
@@ -18,15 +21,6 @@ class ElectronicItemTest extends TestCase
         $this->expectExceptionMessage('WrongType is not an acceptable type');
 
         new ElectronicItem('WrongType');
-    }
-
-    public function testInitializeWrongWired()
-    {
-        $this->expectExceptionMessage(
-            'Cannot add wired elements that are not ElectronicItem');
-
-        new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
-            0.0, ['wrong']);
     }
 
     public function testGetType()
@@ -39,7 +33,8 @@ class ElectronicItemTest extends TestCase
 
     public function testGetWired()
     {
-        $wired = [new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONTROLLER)];
+        $wired = new ElectronicItems([new ElectronicItem(
+            ElectronicItem::ELECTRONIC_ITEM_CONTROLLER)]);
         $subject = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
             0.0, $wired);
 
@@ -48,28 +43,21 @@ class ElectronicItemTest extends TestCase
 
     public function testSetWired()
     {
-        $wired = [new ElectronicItem(
-            ElectronicItem::ELECTRONIC_ITEM_CONTROLLER)];
+        $wired = new ElectronicItems([new ElectronicItem(
+            ElectronicItem::ELECTRONIC_ITEM_CONTROLLER)]);
         $subject = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE);
         $subject->setWired($wired);
 
         $this->assertEquals($wired, $subject->getWired());
     }
 
-    public function testSetWiredWithWrongWired()
-    {
-        $this->expectExceptionMessage(
-            'Cannot add wired elements that are not ElectronicItem');
-
-        $wired = ['wrong'];
-        $subject = new ElectronicItem(ElectronicItem::ELECTRONIC_ITEM_CONSOLE);
-        $subject->setWired($wired);
-    }
-
     public function testGetPrice()
     {
         $subject = new ElectronicItem(
-            ElectronicItem::ELECTRONIC_ITEM_CONSOLE, 5.00, []);
+            ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
+            5.00,
+            new ElectronicItems([])
+        );
 
         $this->assertEquals(5.00, $subject->getPrice());
     }
@@ -77,7 +65,10 @@ class ElectronicItemTest extends TestCase
     public function testSetType()
     {
         $subject = new ElectronicItem(
-            ElectronicItem::ELECTRONIC_ITEM_CONSOLE, 5.00, []);
+            ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
+            5.00,
+            new ElectronicItems([])
+        );
         $subject->setType(ElectronicItem::ELECTRONIC_ITEM_CONTROLLER);
 
         $this->assertEquals(ElectronicItem::ELECTRONIC_ITEM_CONTROLLER,
@@ -88,7 +79,10 @@ class ElectronicItemTest extends TestCase
     {
         $this->expectExceptionMessage('WrongType is not an acceptable type');
         $subject = new ElectronicItem(
-            ElectronicItem::ELECTRONIC_ITEM_CONSOLE, 0.00, []);
+            ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
+            5.00,
+            new ElectronicItems([])
+        );
         $subject->setPrice(5.00);
         $subject->setType('WrongType');
     }
@@ -96,7 +90,10 @@ class ElectronicItemTest extends TestCase
     public function testSetPrice()
     {
         $subject = new ElectronicItem(
-            ElectronicItem::ELECTRONIC_ITEM_CONSOLE, 0.00, []);
+            ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
+            0.00,
+            new ElectronicItems([])
+        );
         $subject->setPrice(5.00);
 
         $this->assertEquals(5.00, $subject->getPrice());
@@ -106,7 +103,10 @@ class ElectronicItemTest extends TestCase
     {
         $this->expectExceptionMessage('Cannot setPrice with value lower than 0');
         $subject = new ElectronicItem(
-            ElectronicItem::ELECTRONIC_ITEM_CONSOLE, 0.00, []);
+            ElectronicItem::ELECTRONIC_ITEM_CONSOLE,
+            5.00,
+            new ElectronicItems([])
+        );
         $subject->setPrice(-5.00);
     }
 }
