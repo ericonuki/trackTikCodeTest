@@ -1,4 +1,4 @@
-FROM composer:2.1.3
+FROM php:8.0.7
 
 WORKDIR /code
 
