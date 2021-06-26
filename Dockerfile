@@ -4,6 +4,6 @@ WORKDIR /code
 
 COPY . /code
 
-RUN composer install
+RUN php composer.phar install
 
 CMD php ./src/run_main.php
