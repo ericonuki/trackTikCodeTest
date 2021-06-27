@@ -92,9 +92,9 @@ class ElectronicItem
         $this->wired = $wired;
     }
 
-    function maxExtras(): ?int
+    function maxExtras(): int
     {
-        return null;
+        return 0;
     }
 
     /**
