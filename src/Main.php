@@ -28,7 +28,8 @@ class Main
     {
         $subject = $this->questionsSetup();
         $console = $subject->getItemsByType(
-            ElectronicItem::ELECTRONIC_ITEM_CONSOLE)[0];
+            ElectronicItem::ELECTRONIC_ITEM_CONSOLE
+        )[0];
         $items = $console->getAllItems();
         print_r("\nTotal cost of the console and its remotes: \n");
         print_r($this->getPrice($items));
@@ -64,7 +65,8 @@ class Main
 
     /**
      * Returns the total price of the array of items
-     * @param array $sorted
+     *
+     * @param  array $sorted
      * @return int
      */
     public function getPrice(array $sorted): float
