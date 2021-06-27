@@ -35,14 +35,10 @@ class ElectronicItems
      */
     public function getItemsByType($type)
     {
-
         if (in_array($type, ElectronicItem::$types)) {
-
             $callback = function (ElectronicItem $item) use ($type) {
-
                 return $item->getType() === $type;
             };
-
             $items = array_filter($this->items, $callback);
         }
 

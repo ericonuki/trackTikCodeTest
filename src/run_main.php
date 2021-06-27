@@ -5,3 +5,4 @@ require_once 'Main.php';
 $main = new Main();
 
 $main->question1();
+$main->question2();
