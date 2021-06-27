@@ -37,6 +37,10 @@ class Main
     }
 
     /**
+     * Sets up the scenario for the questions. Initially was using faker for
+     * the prices, but then I decided to put set values to make it easy to
+     * verify if the result is correct.
+     *
      * @return ElectronicItems
      * @throws Exception
      */

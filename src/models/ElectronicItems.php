@@ -29,6 +29,7 @@ class ElectronicItems
     }
 
     /**
+     * Returns all items of type $type
      *
      * @param  string $type
      * @return array

@@ -44,21 +44,43 @@ class ElectronicItem
         $this->setPrice($price);
     }
 
+    /**
+     * returns the price
+     *
+     * @return float
+     */
     function getPrice()
     {
         return $this->price;
     }
 
+    /**
+     * Returns the type
+     *
+     * @return string|null
+     */
     function getType()
     {
         return $this->type;
     }
 
+    /**
+     * returns the downstream electronics attached to this electronic
+     *
+     * @return ElectronicItems|null
+     */
     function getWired()
     {
         return $this->wired;
     }
 
+    /**
+     * Sets the price for the electronic. If a negative price is inserted, it
+     * throws an exception
+     *
+     * @param $price
+     * @throws Exception
+     */
     function setPrice($price)
     {
         if($price < 0) {
@@ -68,6 +90,13 @@ class ElectronicItem
         $this->price = $price;
     }
 
+    /**
+     * Sets the type to an acceptable type. If a type is not acceptable, it
+     * throws an exception.
+     *
+     * @param $type
+     * @throws Exception
+     */
     function setType($type)
     {
         if(!in_array($type, self::$types)) {
@@ -77,6 +106,15 @@ class ElectronicItem
         $this->type = $type;
     }
 
+    /**
+     * Sets the downstream electronics that are attached to this electronic.
+     * This does replace the previous electronics that were attached there.
+     * If more electronics are attached than the device can handle, an exception
+     * is thrown.
+     *
+     * @param ElectronicItems $wired
+     * @throws Exception
+     */
     function setWired(ElectronicItems $wired)
     {
         if(get_class($wired) !== ElectronicItems::class) {
@@ -92,6 +130,11 @@ class ElectronicItem
         $this->wired = $wired;
     }
 
+    /**
+     * Returns the max number of extras an electronic can have.
+     *
+     * @return int
+     */
     function maxExtras(): int
     {
         return 0;
@@ -105,6 +148,11 @@ class ElectronicItem
      */
     function getAllItems(): array
     {
-        return array_merge([$this], $this->wired->getAllItems());
+        if(is_null($this->getWired()))
+        {
+            return [$this];
+        }
+
+        return array_merge([$this], $this->getWired()->getAllItems());
     }
 }
